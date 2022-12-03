@@ -8,4 +8,13 @@ RSpec.describe "Welcome Page" do
         expect(page).to have_field(:num_participants)
         expect(page).to have_button("Find Activities")
     end 
+
+    it 'redirects to an activity page' do 
+        visit root_path 
+
+        fill_in :num_participants, with: 1
+        click_button 'Find Activities'
+
+        expect(current_path).to eq("/search")
+    end
 end 
